@@ -1,4 +1,3 @@
-# wrong code
 class Error(RuntimeError):
     pass
 
@@ -65,8 +64,11 @@ def calc_pref(a):
             a = kolodec.pop()
             b = kolodec.pop()
             kolodec.push(a - b)
+    if len(kolodec.full()) != 1:
+        try:
+            [].pop()
+        except IndexError:
+            raise Error
     L = list(kolodec.full())
     return float(L[0])
 
-
-print(calc_pref('+-*/1-7+113++211*23'))
